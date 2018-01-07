@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+        <!-- meta data & title -->
+        <meta charset="utf-8">
+        <title>zard-forever</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <style type="text/css">
+            
+        </style>
+        <!-- Favicon and touch icons -->
+         <script type="text/javascript" src="__STATIC__/index/js/jquery-1.10.2.min.js"></script>
+        <script src="__STATIC__/index/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="__STATIC__/index/js/wow.min.js"></script>
+        <script src="__STATIC__/index/js/index.js"></script>
+        <!-- CSS -->
+        
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500&lang=zh-CN' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="__STATIC__/index/assets/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="__STATIC__/index/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="__STATIC__/index/assets/css/animate.min.css">
+        <link rel="stylesheet" href="__STATIC__/index/assets/css/style.css">
+        <link rel="stylesheet" href="__STATIC__/index/css/index.css">
+        <script>
+            window.onresize = function(){
+                // alert( );
+                if(document.body.clientWidth<=1000){
+                   document.getElementById("font-head").style.display="none"; 
+                }else{
+                    document.getElementById("font-head").style.display="block";
+                }
+            }
+            
+        </script>
+        <style type="text/css">
+            #background_music{
+                position:absolute;
+                right:30px;
+                top:50%;
+                margin-top:-50px;
+            }
+        </style>
+    </head>
+  <body>
+
+    <!-- Header --> 
+    <nav id="navbar-section" class="navbar navbar-default navbar-static-top navbar-sticky" role="navigation" >
+        {if condition="isset($audio)"}
+       <img src="__STATIC__/image/background.jpg" alt="music" id="background_music">
+       {/if}
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand wow fadeInDownBig" href="#"><img class="office-logo" src="__STATIC__/image/2.jpg" alt="zard"></a>      
+            </div>
+            <div class="container" id="font-head"><h1 id="h1-style" style="margin-right:0px">What a Beautiful Memory!</h1></div>
+            {if condition="isset($audio)"}
+            <audio src="__STATIC__/background.mp3" controls="controls" loop="loop" autoplay="autoplay" style="float:right" id="audio" hidden>
+                您的浏览器不支持 audio 标签。
+            </audio>
+            {/if}
+        </div>
+
+    </nav>
+    <script>
+        $(function(){
+            var num=0;
+            var deg=10;
+            var background=$("#background_music");
+            var sid=0;
+            function rotate(){
+                sid=setInterval(function(){
+                    if(deg==360){
+                        deg=0;
+                    }
+                    var deg_str='transform:rotate('+deg+'deg)';
+                    background.attr('style',deg_str);
+                    deg+=1;
+                },10)
+            }
+            rotate();
+            $("#background_music").click(function(){
+                 if(num%2==0){
+                    document.getElementById("audio").pause();
+                    clearInterval(sid);
+                    num++;
+                }else{
+                    document.getElementById("audio").play();
+                    rotate();
+                    num++;
+                }
+            })
+        });
+       
+          
+    </script>
+</body>
+</html>

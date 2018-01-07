@@ -1,0 +1,87 @@
+{include file="common_head" /}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The Portfolio</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Styles -->
+    <link href="__STATIC__/index/mv/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="__STATIC__/index/mv/css/style.css" >
+    <link rel="stylesheet" href="__STATIC__/index/mv/css/index.css">
+    <script src="__STATIC__/index/mv/js/index.js"></script>
+    <script>
+        window.onresize = function(){
+                // alert( );
+                if(document.body.clientWidth<=1000){
+                   document.getElementById("search-div-id").style.display="none"; 
+                   document.getElementById("font-head").style.display="none"; 
+                }else{
+                    document.getElementById("search-div-id").style.display="block";
+                    document.getElementById("font-head").style.display="block";
+                }
+            }
+    </script>
+  </head>  
+<body>
+<hr>
+<div class="container" id="search">  
+    <div class="order-div" style="width:540px">
+        <div class="select-merge col-sm-0" >
+            <input type="radio" name="mv_select" id="select1" checked="checked">
+            <label for="select1">时间排序</label><br>
+             <input type="radio" name="mv_select" id="select2">
+            <label for="select2">拼音排序</label>
+        </div>
+        <div class="select-merge">
+            <input type="radio" name="mv_select" id="select3">
+            <label for="select3">专辑排序</label><br>
+            <input type="radio" name="mv_select" id="select4">
+            <label for="select4">人气排序</label>
+        </div>
+        <div class="select-merge">
+           <input type="radio" name="mv_select" id="select5">
+            <label for="select5">单曲</label>
+        </div>
+    </div>
+    <div class="search-div" id="search-div-id">
+        <input type="text">
+        <button class="search-button">
+            <div class="glyphicon glyphicon-search"></div>
+        </button>
+    </div>
+</div>
+<hr>
+{volist name="data" id="vo" key="k" }
+{if condition="$k%3 eq 1"}
+<div class="container">
+    <div class="row">
+{/if}
+        <div class="col-md-4 col-xs-4 div-all">
+            <div class="img-head ">
+                <div>{$k}</div>
+                <div>你好</div>
+                <div>ZEN ZEN 気（き）にしない振（ふ）りしても</div>
+            </div>
+            <a href="{$vo.address}"  target="_blank" class="portfolio-link">
+            <img src="__STATIC__/image/14.jpg" class="img-responsive" alt="">
+            <div class="img-foot"></div>
+            </a>
+        </div>
+{if condition="$k%3 eq 0"}
+    </div>
+</div>
+<hr>
+{/if}
+{/volist}
+</div>
+</div>
+<div style="text-align:center">{$data}</div>
+<hr>
+<hr>
+<div style="clear:both;height:30px" ></div>
+</body>
+</html>
+<!---- Footer ---->
+{include file="common_foot" /}
