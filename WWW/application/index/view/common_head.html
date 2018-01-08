@@ -29,10 +29,12 @@
         <script>
             window.onresize = function(){
                 // alert( );
-                if(document.body.clientWidth<=1000){
+                if(document.body.clientWidth<=1200){
                    document.getElementById("font-head").style.display="none"; 
+                   document.getElementById("footer").style.display="none"; 
                 }else{
                     document.getElementById("font-head").style.display="block";
+                    document.getElementById("footer").style.display="block";
                 }
             }
             
@@ -57,7 +59,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand wow fadeInDownBig" href="#"><img class="office-logo" src="__STATIC__/image/2.jpg" alt="zard"></a>      
             </div>
-            <div class="container" id="font-head"><h1 id="h1-style" style="margin-right:0px">What a Beautiful Memory!</h1></div>
+            <div class="container" id="font-head"><h1 id="h1-style" style="margin-right:0px;width:1000px">What a Beautiful Memory!</h1></div>
             {if condition="isset($audio)"}
             <audio src="__STATIC__/background.mp3" controls="controls" loop="loop" autoplay="autoplay" style="float:right" id="audio" hidden>
                 您的浏览器不支持 audio 标签。
